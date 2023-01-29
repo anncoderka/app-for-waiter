@@ -1,4 +1,5 @@
 import tablesReducer from "./tablesRedux";
+import { API_URL } from '../config';
 
 //selectors
 export const getAllOptions = (state) => { return state.status };
@@ -16,7 +17,7 @@ const updateStatus = (payload) => {
 
 export const fetchStatus = () => {
     return (dispatch) =>{
-    fetch('http://localhost:3131/api/status')
+    fetch(API_URL + '/status')
         .then(res => res.json())
         .then(status => dispatch(updateStatus(status)))
         .catch(rejected => {
